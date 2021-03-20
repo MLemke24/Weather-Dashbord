@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+text-align: center;
+background-color: black;
+color: white;
+}
+
+#box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#left-column {
+    /* display: flex;  */
+    border: 1px solid;
+  
+     /* height: 800px;  */
+}
+
+/* #weather-display {
+    width: 100%;
+   
+    display: flex;
+    justify-content: center;
+} */
+
+#daily-weather {
+    /* flex-direction: row;
+    margin-left: 100px;
+    margin-right: 0;
+    display: flex;  */
+    border: 1px solid;
+    /* width: 80%;
+    height: 400px; */
+}
+
+#five-day {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid;
+     width: 60%;
+    height: 400px;
+}
+
