@@ -48,7 +48,7 @@ let  handleSearch = () => {
          
         console.log(icon)
         let todayWeather = `
-        <h2>${city_name} ${date} </h2>
+        <h4>${city_name} ${date} </h4>
         <img src="https://openweathermap.org/img/wn/${icon}.png"/>
          <p class="container">Tempature: ${temp}</p>
          <p class="container">Humidity: ${humidity}</p>
@@ -77,12 +77,12 @@ function fiveDay(city_name) {
     fetch(apiURL).then(function(response){
     response.json().then(function(data){
         // console.log(data)
-    
+        document.getElementById("cards").style.display = "flex"
      let boxes = document.querySelectorAll(".weather")
      for (i = 0; i < boxes.length; i++) {
         //  console.log(boxes[i])
          boxes[i].innerHTML = ""
-    
+         
       let weatherMain = i * 8 + 3;
     //   console.log(weatherMain)
       let dates = new Date(data.list[weatherMain].dt * 1000)
