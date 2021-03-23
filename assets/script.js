@@ -1,17 +1,6 @@
-// global variables and query selectors
-// api key 
-
 var apiKey = `10dcb627b6bb5b017373a42c98319858` 
 
-
-// ready function for page load 
-    // load styles
-    // load search bar
-    // load searches from local storage
-    
-
-
-// on click function for search
+// let cities = JSON.parse(localStorage.getItem("city")) || [];
 
 let  handleSearch = () => {
 
@@ -27,7 +16,7 @@ let  handleSearch = () => {
         return response.json();
     }
     }).then(function(data){
-        // console.log(data)
+        // Set Variables for Data
         let dailyWeatherContainer = document.querySelector("#daily-weather")
         let date = new Date().toLocaleDateString();
         let main = data.main;
@@ -36,66 +25,65 @@ let  handleSearch = () => {
         let windSpeed = data.wind.speed;
         let icon = data.weather[0].icon
         let lat = data.coord.lat;
-        console.log(lat)
         let lon = data.coord.lon;
-        console.log(lon)
+        
         let getUv = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`
         fetch(getUv).then(function(response){
-            console.log(getUv)
+          
             response.json().then(function(data){
             setUv = data.value
-            console.log(setUv)
-         
-        console.log(icon)
+
         let todayWeather = `
-        <h4>${city_name} ${date} </h4>
-        <img src="https://openweathermap.org/img/wn/${icon}.png"/>
+        <h4>${city_name} ${date} <img src="https://openweathermap.org/img/wn/${icon}.png"/> </h4>
+    
          <p class="container">Tempature: ${temp}</p>
          <p class="container">Humidity: ${humidity}</p>
          <p class="container">Wind Speed: ${windSpeed}</p>
          <p class="container">UV Index: ${setUv}</p>
         `
         dailyWeatherContainer.innerHTML = todayWeather;
-
-        let savedSearched = document.querySelector("#searched")
-        let appendSearches = `
-        <li id="cities" class="list-group-item">${city_name}</li>
+        
+        let savedCities = document.querySelector("#searched")
+        let savedSearches = `
+        <li class="list-group list-group-flush">${city_name}</li>
         `
-        savedSearched.innerHTML = appendSearches;
-    })
+        savedCities.innerHTML = savedSearches
+
+        localStorage.setItem("city", JSON.stringify(savedSearches))
+       
+     })
    })  
   }).catch(err => console.log(err))
+
 }
 
-// function to get conditions
-    // pass in information from on click
-    // parse information and grab key information
-    // create and append information to html with variables passed in 
+
+
 
 function fiveDay(city_name) {
     var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city_name}&units=imperial&appid=${apiKey}`
     fetch(apiURL).then(function(response){
     response.json().then(function(data){
-        // console.log(data)
+       
         document.getElementById("cards").style.display = "flex"
      let boxes = document.querySelectorAll(".weather")
      for (i = 0; i < boxes.length; i++) {
-        //  console.log(boxes[i])
+       
          boxes[i].innerHTML = ""
          
       let weatherMain = i * 8 + 3;
-    //   console.log(weatherMain)
+    
       let dates = new Date(data.list[weatherMain].dt * 1000)
       let weatherMonth = dates.getMonth() + 1;
       let weatherDays = dates.getDate();
       let weatherYear = dates.getFullYear();
       let fiveTemp = data.list[weatherMain].main.temp;
-    //   console.log(fiveTemp)
+    
       let setTemp = Math.floor(fiveTemp)
       let fiveHumid = data.list[weatherMain].main.humidity;
       let setHumid = Math.floor(fiveHumid);
-    //   console.log(setTemp)
-    //   console.log(weatherMonth, weatherDays, weatherYear)
+    
+    //   Append Five Day Information Into Boxes
       let displayDate = document.createElement("h4")
       displayDate.setAttribute("class", "text-dark")
       displayDate.innerHTML = weatherMonth + "/" + weatherDays + "/" + weatherYear;
@@ -119,17 +107,7 @@ function fiveDay(city_name) {
  })
 
 }
-// 5 day forcast function 
-    // fetch for that info 
-    // parse it 
-    // get date, temp and humidity 
-    // append that info with bootstrap cards
-   
-
-// get current forcast function 
-    // set to local storage 
-    // hold clear history button
 
     document.getElementById("search").addEventListener("click", handleSearch)
 
-    // list[1].dt_txt
+   
