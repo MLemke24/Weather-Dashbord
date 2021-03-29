@@ -1,10 +1,10 @@
 # Weather-Dashbord
 
 ## This Repository
-This repository contains a 5 question quiz with a 60 second timer.
+This repository contains a weather dashboard that allows you to see a daily and 5 day forcast of your chosen city! 
 
 ## Password Generator
-![Image of Javascript Quiz](https://github.com/MLemke24/Javascript-Quiz/blob/main/assets/images/_C__Users_mattr_Desktop_projects_Javascript-Quiz_index.html.png)
+![Image of Javascript Quiz]https://raw.githubusercontent.com/MLemke24/Weather-Dashbord/main/assets/images/screencapture-file-C-Users-mattr-Desktop-projects-Weather-Dashbord-index-html-2021-03-28-20_09_29.png)
 
 
 ## Languages Used
@@ -13,14 +13,13 @@ This repository contains a 5 question quiz with a 60 second timer.
 * JavaScript
 
 ## About This Project
-* When the user gets a question right, they gain 10 seconds 
-* when they get one wrong, they lose 15 seconds. 
-* Your score is then based on your time remaining which can be saved with your initials.
-
+* When the types in a city they want to check the weather for a daily forcast will pop up for that city 
+* In addition, a 5 day forecast will also pop up 
+* The app wil also save your searches so you can re-visit them at any time
 
 
 ##  Contact Me Here
 Matthew Lemke: Mattrlemke@gmail.com
 
 ## Link To Deployed Application 
-[Link To Quiz](https://mlemke24.github.io/Javascript-Quiz/)
+[Link To Quiz](https://mlemke24.github.io/Weather-Dashbord/)
