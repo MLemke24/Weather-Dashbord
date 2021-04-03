@@ -25,7 +25,7 @@ let  handleSearch = () => {
     let inputBox = document.querySelector("#City")
     let city_name = inputBox.value;
     inputBox.value = ""
-    var apiUrl = `HTTPS://api.openweathermap.org/data/2.5/weather?q=${city_name}&units=imperial&appid=${apiKey}`
+    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&units=imperial&appid=${apiKey}`
     fetch(apiUrl).then(function(response){
         if (!response.ok){
             alert("City name not found! You suck")
@@ -44,7 +44,7 @@ let  handleSearch = () => {
         let lat = data.coord.lat;
         let lon = data.coord.lon;
         
-        let getUv = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        let getUv = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`
         fetch(getUv).then(function(response){
           
             response.json().then(function(data){
