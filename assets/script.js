@@ -1,22 +1,21 @@
 var apiKey = `10dcb627b6bb5b017373a42c98319858` 
 
 let setHistory;
-// console.log(setHistory)
 
-// let getHistory = function() {
-// let cities = JSON.parse(localStorage.getItem("city")) || [];
-// if (cities > 0){
-//     JSON.parse(localStorage.getItem("city"))
-// } else {
-//     let newArray = []
-// }
-// console.log(cities)
-// }
-// getHistory()
 if(!JSON.parse(localStorage.getItem("city"))){
     setHistory = [];
 } else {
     setHistory = JSON.parse(localStorage.getItem("city"))
+}
+
+for (i = 0; i < setHistory.length; i++) {
+    console.log(setHistory[i].City)
+        let savedCities = document.querySelector("#searched")
+        let setCities = document.createElement("li")
+        setCities.setAttribute("class", "history list-group list-group-flush")
+        setCities.setAttribute("style", "border-solid")
+        setCities.innerHTML = setHistory[i].City
+        savedCities.appendChild(setCities)
 }
 
 
@@ -61,10 +60,12 @@ let  handleSearch = () => {
         dailyWeatherContainer.innerHTML = todayWeather;
         
         let savedCities = document.querySelector("#searched")
-        let savedSearches = `
-        <a id="history" class="list-group list-group-flush">${city_name}</a>
-        `
-        savedCities.innerHTML = savedSearches
+        let setCities = document.createElement("li")
+        setCities.setAttribute("class", "history list-group list-group-flush")
+        setCities.setAttribute("style", "border-solid")
+        setCities.innerHTML = city_name
+      
+        savedCities.appendChild(setCities)
 
        fiveDay(city_name, todayWeather)
 
@@ -73,10 +74,6 @@ let  handleSearch = () => {
   }).catch(err => console.log(err))
 
 }
-
-
-
-
 
 
 function fiveDay(city_name, todayWeather) {
@@ -121,35 +118,15 @@ function fiveDay(city_name, todayWeather) {
       
      }
 
-     // Save to Local Storage
-    
-
-     //grab existing history from local if its there
-
-     //empty array to populate history
-
-     //function to check if existing history is > 0
-     //if true then we parse our local histor
-     //create a new array with existing history and new city
-     //then set new array with stringify to local
-     //else make a new local history
 
      let history = {City: city_name, DailyWeather: todayWeather, fiveDay: boxes}
     //  console.log(history)
 
-    if(setHistory && setHistory.length > 0) {
-    setHistory = JSON.parse(localStorage.getItem("city"))
+   
     let newHistory = [...setHistory, history]
     
     localStorage.setItem('city', JSON.stringify(newHistory))
- 
-    } else {
-        //create initial history
-    }
-    
-
-   
-        
+      
   })
  })
 

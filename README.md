@@ -3,8 +3,8 @@
 ## This Repository
 This repository contains a weather dashboard that allows you to see a daily and 5 day forcast of your chosen city! 
 
-## Password Generator
-![Image of Javascript Quiz](https://raw.githubusercontent.com/MLemke24/Weather-Dashbord/main/assets/images/screencapture-file-C-Users-mattr-Desktop-projects-Weather-Dashbord-index-html-2021-03-28-20_09_29.png)
+## My Website
+![Image of Weather Dashboard](https://raw.githubusercontent.com/MLemke24/Weather-Dashbord/main/assets/images/screencapture-file-C-Users-mattr-Desktop-projects-Weather-Dashbord-index-html-2021-03-28-20_09_29.png)
 
 
 ## Languages Used
@@ -22,4 +22,4 @@ This repository contains a weather dashboard that allows you to see a daily and 
 Matthew Lemke: Mattrlemke@gmail.com
 
 ## Link To Deployed Application 
-[Link To Quiz](https://mlemke24.github.io/Weather-Dashbord/)
+[Link To Weather Dashboard](https://mlemke24.github.io/Weather-Dashbord/)
