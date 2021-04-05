@@ -1,4 +1,6 @@
 var apiKey = `10dcb627b6bb5b017373a42c98319858` 
+let searched = document.getElementById("searched")
+
 
 let setHistory;
 
@@ -9,28 +11,37 @@ if(!JSON.parse(localStorage.getItem("city"))){
 }
 
 for (i = 0; i < setHistory.length; i++) {
-    console.log(setHistory[i].City)
+    // console.log(setHistory[i].City)
         let savedCities = document.querySelector("#searched")
         let setCities = document.createElement("li")
-        setCities.setAttribute("class", "history list-group list-group-flush")
-        setCities.setAttribute("style", "border-solid")
+        setCities.setAttribute("class", "history list-group-item")
+        setCities.setAttribute("value", setHistory[i].City);
         setCities.innerHTML = setHistory[i].City
+        document.getElementById("searched").onclick = function () {
+            handleSearch(setCities.innerHTML);
+            // console.log(setCities.innerHTML)
+        }
+
         savedCities.appendChild(setCities)
+        
+}
+
+document.getElementById("search").onclick = function () {
+let inputBox = document.querySelector("#City")
+let city_name = inputBox.value;
+inputBox.value = " "
+handleSearch(city_name)
 }
 
 
-let  handleSearch = () => {
-
-    let inputBox = document.querySelector("#City")
-    let city_name = inputBox.value;
-    inputBox.value = ""
+let handleSearch = (city_name) => {
+   
     var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&units=imperial&appid=${apiKey}`
     fetch(apiUrl).then(function(response){
-        if (!response.ok){
-            alert("City name not found! You suck")
-        } else {
+        console.log(response)
+       
         return response.json();
-    }
+      
     }).then(function(data){
         // Set Variables for Data
         let dailyWeatherContainer = document.querySelector("#daily-weather")
@@ -61,8 +72,8 @@ let  handleSearch = () => {
         
         let savedCities = document.querySelector("#searched")
         let setCities = document.createElement("li")
-        setCities.setAttribute("class", "history list-group list-group-flush")
-        setCities.setAttribute("style", "border-solid")
+        setCities.setAttribute("class", "history list-group-item")
+        setCities.setAttribute("value", city_name);
         setCities.innerHTML = city_name
       
         savedCities.appendChild(setCities)
